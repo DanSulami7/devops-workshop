@@ -4,10 +4,13 @@ pipeline {
            label 'maven'
        } 
     } 
+	environment{
+		PATH = "/opt/apache-maven-3.9.9/bin:$PATH"
+	}
     stages {
-        stage('Clone-core') {
+        stage('buid') {
             steps {
-                git branch: 'main', url: 'https://github.com/DanSulami7/devops-workshop.git'
+                 sh 'mvn clean deploy'
             }
         }
     }
